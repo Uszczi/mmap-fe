@@ -3,16 +3,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
+import getRoutes from "@/api/routes";
 
 // Components
-import HelloWorld from '../components/HelloWorld.vue';
+import HelloWorld from "../components/HelloWorld.vue";
 
 export default defineComponent({
-  name: 'HomeView',
+  name: "HomeView",
+
+  async onMounted() {
+    console.log("sdfaf");
+    await getRoutes();
+  },
 
   components: {
-    HelloWorld,
-  },
+    HelloWorld
+  }
 });
 </script>
