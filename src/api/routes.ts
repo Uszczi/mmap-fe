@@ -7,7 +7,7 @@ interface Route {
 }
 
 async function getRoutes(): Promise<Route[]> {
-  const url = "https://mateuszpapuga.pl/api/routes";
+  const url = "http://localhost:8020/api/routes";
   const response = await axios.get(url);
 
   return response.data as Route[];

@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 90%; width: 90%;">
+  <div style="height: 90%; width: 90%">
     <l-map :center="[51.7645091, 19.4385541]" :zoom="12">
       <l-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -11,53 +11,29 @@
 </template>
 <script>
 import getRoutes from "@/api/routes";
-import {
-  LMap,
-  LIcon,
-  LTileLayer,
-  LCircle,
-  LFeatureGroup,
-  LMarker,
-  LControlLayers,
-  LTooltip,
-  LPopup,
-  LPolyline,
-  LPolygon,
-  LRectangle
-} from "@vue-leaflet/vue-leaflet";
+import { LMap, LTileLayer, LCircle } from "@vue-leaflet/vue-leaflet";
 import "leaflet/dist/leaflet.css";
+
 export default {
   components: {
     LMap,
-    LIcon,
     LTileLayer,
     LCircle,
-    LFeatureGroup,
-    LMarker,
-    LControlLayers,
-    LTooltip,
-    LPopup,
-    LPolyline,
-    LPolygon,
-    LRectangle
   },
   data() {
     return {
       routes: [],
-      points: []
+      points: [],
     };
   },
   async mounted() {
     const routes = await getRoutes();
     this.routes = routes;
-    let points = [];
-    for (let route of routes) {
+    const points = [];
+    for (const route of routes) {
       points.push(...route.points);
     }
-    console.log(points);
     this.points = points;
   },
-  computed: {},
-  methods: {}
 };
 </script>
